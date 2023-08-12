@@ -106,6 +106,16 @@ $(function () {
         )
     })
 
+    $('button.navbar-toggler').on('click', function () {
+        let show = $('button.navbar-toggler').attr('aria-expanded')
+        console.log(show)
+        if (show) {
+            $('.navbar-container').css('background-color', 'black')
+        } else {
+            $('.navbar-container').css('background-color', 'none')
+        }
+    })
+
     /**Theme switcher - DEMO PURPOSE ONLY */
     // $('.switcher-trigger').click(function () {
     //     $('.switcher-wrap').toggleClass('active');

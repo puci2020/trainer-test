@@ -3,4 +3,8 @@
 button,
 h2 {
   font-family: "Kanit", sans-serif;
+}
+
+.bg-hero {
+  background-image: url("/img/3.jpg");
 }/*# sourceMappingURL=new.css.map */
