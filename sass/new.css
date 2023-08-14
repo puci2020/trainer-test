@@ -6,11 +6,11 @@ h2 {
 }
 
 .bg-hero {
-  background-image: url("/img/3.jpg");
+  background-image: url("../img/3.jpg");
 }
 
 #offer {
-  background-image: url("/img/gym.jpg");
+  background-image: url("../img/gym.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position-x: center;
