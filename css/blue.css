@@ -7836,7 +7836,7 @@ footer h5 {
     top: 0;
     font-size: 20px;
     text-align: center;
-    color: #005cf5;
+    color: #2979ff;
     cursor: pointer;
     display: -ms-flexbox;
     display: flex;
@@ -7847,7 +7847,7 @@ footer h5 {
     border-radius: 0 2px 2px 0; }
         .switcher-wrap
     .switcher-trigger span:hover {
-      color: #2979ff; }
+      color: #0361ff; }
 
 @media screen and (max-width: 768px) {
   .switcher-wrap {

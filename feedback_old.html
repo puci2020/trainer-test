@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Knight - Free Bootstrap 4
+        Product Landing Page Template
+    </title>
+    <meta name="description"
+        content="Knight is a beautiful Bootstrap 4 template for product landing pages." />
+
+    <!--Inter UI font-->
+    <link
+        href="https://rsms.me/inter/inter-ui.css"
+        rel="stylesheet">
+
+    <!--vendors styles-->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet"
+        href="css/default.css"
+        id="theme-color">
+
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,500&family=Poppins:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="sass/new.css">
+</head>
+
+<body>
+    <section class="pt-6 pb-7"
+        id="features">
+        <div class="container">
+            <div class="row mt-6">
+                <div
+                    class="col-md-6 mr-auto">
+                    <h2>Napisz do mnie!
+                    </h2>
+                    <p class="mb-5">
+                        Lorem ipsum
+                        dolor sit amet,
+                        consectetur
+                        adipiscing elit.
+                        Nulla convallis
+                        pulvinar
+                        vestibulum.
+                        Donec eleifend,
+                        sem sed dictum
+                        mattis, turpis
+                        purus placerat
+                        eros.</p>
+                </div>
+                <div class="col-md-5">
+                    <form
+                        id="feedbackForm">
+                        <div
+                            class="card p-3">
+                            <div
+                                class="d-flex justify-content-between align-items-center">
+                                <div
+                                    class="ratings">
+                                    <i
+                                        class="fa fa-star rating-color"></i>
+                                    <i
+                                        class="fa fa-star rating-color"></i>
+                                    <i
+                                        class="fa fa-star rating-color"></i>
+                                    <i
+                                        class="fa fa-star rating-color"></i>
+                                    <i
+                                        class="fa fa-star"></i>
+                                </div>
+
+                            </div>
+                            <div
+                                class="form-group">
+                                <label
+                                    for="exampleFormControlInput1">Ocena</label>
+                                <select
+                                    class="form-control"
+                                    name="rate">
+                                    <option
+                                        selected
+                                        value="5">
+                                        5
+                                    </option>
+                                    <option
+                                        value="4">
+                                        4
+                                    </option>
+                                    <option
+                                        value="3">
+                                        3
+                                    </option>
+                                    <option
+                                        value="2">
+                                        2
+                                    </option>
+                                    <option
+                                        value="1">
+                                        1
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div
+                                class="form-group">
+                                <label
+                                    for="exampleFormControlTextarea1">Wiadomość</label>
+                                <textarea
+                                    class="form-control"
+                                    id="exampleFormControlTextarea1"
+                                    name="description"
+                                    rows="5"></textarea>
+                            </div>
+                            <div
+                                class="form-group">
+                                <button
+                                    class="btn btn-lg btn-primary btn-block"
+                                    type="submit">Wyślij
+                                </button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+<script>
+    // JavaScript function to submit the form
+    function submitForm() {
+        const formElement = document.getElementById('feedbackForm');
+
+        formElement.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Your form submission logic here (e.g., sending data to the server)
+            // For demonstration purposes, we'll just log the form data to the console.
+
+            const formData = new FormData(formElement);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+
+            const feedbackData = {
+                rate: formObject.rate,
+                description: formObject.description,
+                show: false,
+            };
+
+            // Replace 'YOUR_BEARER_TOKEN' with your actual bearer token
+            const bearerToken = 'ddef7eb215bb6d2b1f5c0bbcbd71011f03a70829a996dc0f489216e2b60ae7ca033f4849cba02f80ff6162ffc2525e0ba9fa8299622cebf5e1fe77b539d584cff7212e4212ea9ad6a05ed621a3d0c3c27cea25bd72e83fd639bc0451e0ff915afd2be79d3c2b2b2fe6fa02a2bb9a55a8e3d2e4d258ef6ef0a9241afe371f30bc';
+
+            // Endpoint URL
+            const url = 'http://localhost:1337/api/feedbacks';
+
+            // Headers
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${bearerToken}`,
+            };
+
+            // Make the POST request using Fetch API
+            fetch(url, {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify({ data: feedbackData }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    // Handle the response data here
+                    console.log('Response:', data);
+                })
+                .catch((error) => console.error('Error:', error));
+            console.log('Form data:', formObject);
+
+            // Optionally, you can use Fetch API or other methods to send data to the server.
+
+            // Clear the form fields after successful submission
+            formElement.reset();
+        });
+    }
+    submitForm();
+</script>
