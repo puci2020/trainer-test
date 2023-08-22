@@ -9,6 +9,26 @@ h2 {
   background-image: url("../img/3.JPG");
 }
 
+.navbar .navbar-brand {
+  font-size: 1.9rem;
+}
+.navbar .dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.9);
+  border: none;
+}
+.navbar .dropdown-menu .dropdown-item {
+  padding-left: 2rem;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.navbar .dropdown-menu .dropdown-item:hover {
+  background-color: #1b1b1b;
+  color: #ffffff !important;
+}
+
+footer .social a {
+  background: #2979ff;
+}
+
 #faq {
   background-image: url("../img/6.JPG");
   background-attachment: fixed;
@@ -79,6 +99,9 @@ h2 {
 @media (max-width: 767.98px) {
   .navbar-container {
     background-color: rgba(0, 0, 0, 0.95);
+  }
+  .nav-social {
+    gap: 20px;
   }
 }
 @media (min-width: 1600px) {

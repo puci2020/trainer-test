@@ -7527,8 +7527,9 @@ body {
   width: 100%;
   transition: all .3s ease-out; }
   .smart-scroll.scrolling {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%); }
+    background-color: rgba(0, 0, 0, 0.9);
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
     .smart-scroll.scrolling.up {
       background-color: rgba(0, 0, 0, 0.9);
       -webkit-transform: translateY(0);
