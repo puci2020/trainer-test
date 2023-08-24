@@ -5,8 +5,19 @@ h2 {
   font-family: "Kanit", sans-serif;
 }
 
+.text-muted {
+  color: hsl(200, 15%, 70%) !important;
+}
+
+.text-body {
+  color: hsl(198, 16%, 90%) !important;
+}
+
 .bg-hero {
-  background-image: url("../img/3.JPG");
+  background-image: url("../img/home.JPG");
+}
+.bg-hero::before {
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .navbar .navbar-brand {
@@ -45,7 +56,7 @@ footer .social a {
   left: 0;
   top: 0;
   content: "";
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 #faq .container {
   z-index: 2;
@@ -68,7 +79,7 @@ footer .social a {
   left: 0;
   top: 0;
   content: "";
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 #offer .container {
   z-index: 2;
@@ -94,6 +105,14 @@ footer .social a {
 
 .rating-color {
   color: #fbc634;
+}
+
+.box-link {
+  transition: all 0.2s ease-in-out;
+}
+.box-link:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 @media (max-width: 767.98px) {
