@@ -65,6 +65,8 @@ if (isset($_POST['submit'])) {
         rel="stylesheet">
     <link rel="stylesheet"
         href="sass/new.css">
+    <link rel="stylesheet"
+        href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
@@ -73,7 +75,7 @@ if (isset($_POST['submit'])) {
     <section class="smart-scroll">
         <div
             class="container-fluid navbar-container">
-            <nav
+            <nav data-aos="fade-down"
                 class="navbar navbar-expand-md navbar-dark">
                 <a class="navbar-brand heading-black"
                     href="index.html">
@@ -107,7 +109,7 @@ if (isset($_POST['submit'])) {
                         <li
                             class="nav-item">
                             <a class="nav-link page-scroll"
-                                href="#pricing">O
+                                href="#about">O
                                 mnie
                             </a>
                         </li>
@@ -126,21 +128,21 @@ if (isset($_POST['submit'])) {
                             <div class="dropdown-menu"
                                 aria-labelledby="navbarDropdown">
                                 <a class="nav-link dropdown-item"
-                                    href="#">Treningi
+                                    href="./personal_training.html">Treningi
                                     personalne</a>
                                 <a class="nav-link dropdown-item"
-                                    href="#">Treningi
+                                    href="./olympic_doubles.html">Treningi
                                     dwuboju
                                     olimpijskiego</a>
                                 <a class="nav-link dropdown-item"
-                                    href="#">Plany
+                                    href="./workout_plans.html">Plany
                                     treningowe</a>
                             </div>
                         </li>
                         <li
                             class="nav-item">
                             <a class="nav-link page-scroll"
-                                href="#faq">Opinie
+                                href="#opinion">Opinie
                             </a>
                         </li>
                         <!-- <li
@@ -186,7 +188,7 @@ if (isset($_POST['submit'])) {
 
         <div class="container">
             <div class="row vh-md-100">
-                <div
+                <div data-aos="fade-right"
                     class="col-md-8 col-sm-10 col-12 mx-lg-1 my-auto text-left">
                     <h1
                         class="heading-black text-capitalize">
@@ -218,8 +220,8 @@ if (isset($_POST['submit'])) {
 
     <!-- features section -->
     <section class="py-6"
-        id="features">
-        <div
+        id="about">
+        <div data-aos="zoom-in"
             class="container text-center">
             <h2
                 class="heading-black mb-5 text-primary">
@@ -227,7 +229,7 @@ if (isset($_POST['submit'])) {
                 mnie</h2>
             <div class="row">
                 <div
-                    class="col-md-8 text-left">
+                    class="col-md-12 text-left">
 
                     <p
                         class="text-muted lead">
@@ -341,19 +343,34 @@ if (isset($_POST['submit'])) {
                     </p>
                 </div>
                 <div
-                    class="col-md-4 text-center my-auto">
+                    class="col-md-12 d-flex my-auto">
+                    <!-- <div
+                        class="slider_one"> -->
                     <div
-                        class="slider_one">
+                        class="col-md-3">
+                        <img src="img/1.2-slider.jpg"
+                            class="img-fluid rounded d-block m-2"
+                            alt="Work 1" />
+                    </div>
+                    <div
+                        class="col-md-3">
                         <img src="img/2-slider.jpg"
                             class="img-fluid rounded d-block m-2"
                             alt="Work 1" />
+                    </div>
+                    <div
+                        class="col-md-3">
                         <img src="img/4-slider.jpg"
                             class="img-fluid rounded d-block m-2"
                             alt="Work 2" />
+                    </div>
+                    <div
+                        class="col-md-3">
                         <img src="img/5-slider.jpg"
                             class="img-fluid rounded d-block m-2"
                             alt="Work 3" />
                     </div>
+                    <!-- </div> -->
                 </div>
             </div>
 
@@ -362,7 +379,7 @@ if (isset($_POST['submit'])) {
     <section
         class="py-6 section-angle top-left bottom-right"
         id="offer">
-        <div
+        <div data-aos="zoom-in"
             class="container text-center">
             <h2
                 class="heading-black mb-5">
@@ -372,7 +389,7 @@ if (isset($_POST['submit'])) {
                     class="col-md-10 mx-auto">
                     <div
                         class="row feature-boxes">
-                        <a href="#"
+                        <a href="./personal_training.html"
                             class="col-md-4 box box-link">
 
                             <div
@@ -389,7 +406,7 @@ if (isset($_POST['submit'])) {
                             </h5>
                         </a>
                         </a>
-                        <a href="#"
+                        <a href="./olympic_doubles.html"
                             class="col-md-4 box box-link">
                             <div
                                 class="icon-box box-success">
@@ -405,7 +422,7 @@ if (isset($_POST['submit'])) {
                                 olimpijskiego
                             </h5>
                         </a>
-                        <a href="#"
+                        <a href="./workout_plans.html"
                             class="col-md-4 box box-link">
                             <div
                                 class="icon-box box-danger">
@@ -487,7 +504,8 @@ if (isset($_POST['submit'])) {
     <section
         class="py-6 section-angle top-left bottom-right"
         id="pricing">
-        <div class="container">
+        <div class="container"
+            data-aos="zoom-in">
             <div class="row">
                 <div
                     class="col-md-6 mx-auto text-center">
@@ -513,14 +531,9 @@ if (isset($_POST['submit'])) {
                     <div
                         class="card-deck pricing-table">
                         <div
-                            class="card">
+                            class="card col-md-12">
                             <div
                                 class="card-body">
-                                <!-- <h3
-                                    class="card-title pt-3">
-                                    1
-                                    trening
-                                </h3> -->
                                 <h2
                                     class="card-title text-primary mb-0 pt-4">
                                     150
@@ -549,15 +562,15 @@ if (isset($_POST['submit'])) {
                                     </li>
 
                                 </ul>
-                                <a href="#"
+                                <!-- <a href="#"
                                     class="btn btn-primary">
                                     Zapisz
                                     się!
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                         <div
-                            class="card">
+                            class="card col-md-12">
                             <div
                                 class="card-body">
                                 <h2
@@ -587,15 +600,15 @@ if (isset($_POST['submit'])) {
                                         +200zł
                                     </li>
                                 </ul>
-                                <a href="#"
+                                <!-- <a href="#"
                                     class="btn btn-info">
                                     Zapisz
                                     się!
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                         <div
-                            class="card">
+                            class="card col-md-12">
                             <div
                                 class="card-body">
                                 <h2
@@ -626,15 +639,15 @@ if (isset($_POST['submit'])) {
                                         +300zł
                                     </li>
                                 </ul>
-                                <a href="#"
+                                <!-- <a href="#"
                                     class="btn btn-primary">
                                     Zapisz
                                     się!
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                         <div
-                            class="card">
+                            class="card col-md-4">
                             <div
                                 class="card-body">
                                 <h2
@@ -665,11 +678,11 @@ if (isset($_POST['submit'])) {
                                         +200zł
                                     </li>
                                 </ul>
-                                <a href="#"
+                                <!-- <a href="#"
                                     class="btn btn-primary">
                                     Zapisz
                                     się!
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>
@@ -752,7 +765,8 @@ if (isset($_POST['submit'])) {
     <section
         class="py-6 section-angle top-left bottom-right"
         id="faq">
-        <div class="container">
+        <div class="container"
+            data-aos="zoom-in">
             <div class="row">
                 <div
                     class="col-md-6 mx-auto text-center">
@@ -910,8 +924,9 @@ if (isset($_POST['submit'])) {
     <!--news section-->
     <section
         class="py-6 section-angle top-left bottom-left"
-        id="blog">
-        <div class="container">
+        id="opinion">
+        <div class="container"
+            data-aos="zoom-in">
             <div class="row">
                 <div
                     class="col-md-6 mx-auto text-center">
@@ -1515,7 +1530,7 @@ if (isset($_POST['submit'])) {
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <h5>
                         Znajdziesz
                         mnie
@@ -1562,10 +1577,10 @@ if (isset($_POST['submit'])) {
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <h5>Kontakt</h5>
 
-                </div>
+                </div> -->
             </div>
             <div class="row mt-5">
                 <div
@@ -1610,6 +1625,14 @@ if (isset($_POST['submit'])) {
         src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script
         src="js/scripts.js"></script>
+    <script
+        src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 600,
+        });
+    </script>
 </body>
 
 </html>
