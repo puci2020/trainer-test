@@ -197,4 +197,32 @@ $(function () {
     //     $('.color-switcher ul li').removeClass('active');
     //     $(this).addClass('active');
     // });
+
+    const form = document.getElementById('contact_form')
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+
+        // Perform client-side validation here if needed
+
+        // Submit the form with hCaptcha response token
+        const token = grecaptcha.getResponse()
+        const response = await fetch('https://hcaptcha.com/siteverify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `secret=b3e837d8-64a4-4368-8870-3e186917c94a&response=${token}`,
+        })
+
+        const data = await response.json()
+        if (data.success) {
+            // hCaptcha verification successful, process the form
+            console.log('work')
+            // form.submit()
+        } else {
+            // hCaptcha verification failed, show an error
+            console.log('hCaptcha verification failed')
+        }
+    })
 })

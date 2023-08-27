@@ -10,7 +10,10 @@
     </title>
     <meta name="description"
         content="Knight is a beautiful Bootstrap 4 template for product landing pages." />
-
+    <script
+        src="https://hcaptcha.com/1/api.js"
+        async
+        defer></script>
     <!--Inter UI font-->
     <link
         href="https://rsms.me/inter/inter-ui.css"
@@ -186,6 +189,7 @@
                 </p>
 
                 <form action=""
+                    id="contact_form"
                     method="post"
                     class="mt-5">
                     <div
@@ -276,6 +280,12 @@
                             drogą
                             elektroniczną.
                             *</label>
+                    </div>
+                    <div
+                        class="form-group">
+                        <div class="h-captcha"
+                            data-sitekey="b3e837d8-64a4-4368-8870-3e186917c94a">
+                        </div>
                     </div>
                     <div
                         class="form-group">
