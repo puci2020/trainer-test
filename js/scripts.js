@@ -198,31 +198,147 @@ $(function () {
     //     $(this).addClass('active');
     // });
 
-    const form = document.getElementById('contact_form')
+    const contactForm = document.getElementById('contact_form')
+    const feedbackForm = document.getElementById('feedback_form')
 
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault()
+    if (contactForm)
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault()
 
-        // Perform client-side validation here if needed
+            const firstName = document.getElementById('first_name').value
+            const email = document.getElementById('email').value
+            const subject = document.getElementById('subject').value
+            const message = document.getElementById('message').value
+            const rodo = document.getElementById('rodo').checked
 
-        // Submit the form with hCaptcha response token
-        const token = grecaptcha.getResponse()
-        const response = await fetch('https://api.hcaptcha.com/siteverify', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `secret=0x2a10710d5cD127452F08cE302DB5E945338D2b3a&response=${token}`,
+            if (!firstName || !email || !subject || !message || !rodo) {
+                event.preventDefault()
+                if (!firstName)
+                    document
+                        .getElementById('first_name')
+                        .classList.add('is-invalid')
+                else
+                    document
+                        .getElementById('first_name')
+                        .classList.remove('is-invalid')
+
+                if (!email)
+                    document.getElementById('email').classList.add('is-invalid')
+                else
+                    document
+                        .getElementById('email')
+                        .classList.remove('is-invalid')
+
+                if (!subject)
+                    document
+                        .getElementById('subject')
+                        .classList.add('is-invalid')
+                else
+                    document
+                        .getElementById('subject')
+                        .classList.remove('is-invalid')
+
+                if (!message)
+                    document
+                        .getElementById('message')
+                        .classList.add('is-invalid')
+                else
+                    document
+                        .getElementById('message')
+                        .classList.remove('is-invalid')
+
+                if (!rodo)
+                    document.getElementById('rodo').classList.add('is-invalid')
+                else
+                    document
+                        .getElementById('rodo')
+                        .classList.remove('is-invalid')
+            }
+
+            // const token = grecaptcha.getResponse()
+            // const response = await fetch('https://api.hcaptcha.com/siteverify', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/x-www-form-urlencoded',
+            //     },
+            //     body: `secret=0x2a10710d5cD127452F08cE302DB5E945338D2b3a&response=${token}`,
+            // })
+
+            // const data = await response.json()
+            // if (data.success) {
+            //     // hCaptcha verification successful, process the form
+            //     console.log('work')
+            //     // form.submit()
+            // } else {
+            //     // hCaptcha verification failed, show an error
+            //     console.log('hCaptcha verification failed')
+            // }
         })
 
-        const data = await response.json()
-        if (data.success) {
-            // hCaptcha verification successful, process the form
-            console.log('work')
-            // form.submit()
-        } else {
-            // hCaptcha verification failed, show an error
-            console.log('hCaptcha verification failed')
-        }
-    })
+    if (feedbackForm)
+        feedbackForm.addEventListener('submit', async (event) => {
+            event.preventDefault()
+
+            const firstName = document.getElementById('first_name').value
+            const feedbackValue =
+                document.getElementById('feedback_value').value
+            const comment = document.getElementById('comment').value
+            const rodo = document.getElementById('rodo').checked
+
+            if (!firstName || !feedbackValue || !comment || !rodo) {
+                event.preventDefault()
+                if (!firstName)
+                    document
+                        .getElementById('first_name')
+                        .classList.add('is-invalid')
+                else
+                    document
+                        .getElementById('first_name')
+                        .classList.remove('is-invalid')
+
+                if (!feedbackValue)
+                    document
+                        .getElementById('feedback_value')
+                        .classList.add('is-invalid')
+                else
+                    document
+                        .getElementById('feedback_value')
+                        .classList.remove('is-invalid')
+
+                if (!comment)
+                    document
+                        .getElementById('comment')
+                        .classList.add('is-invalid')
+                else
+                    document
+                        .getElementById('comment')
+                        .classList.remove('is-invalid')
+
+                if (!rodo)
+                    document.getElementById('rodo').classList.add('is-invalid')
+                else
+                    document
+                        .getElementById('rodo')
+                        .classList.remove('is-invalid')
+            }
+
+            // const token = grecaptcha.getResponse()
+            // const response = await fetch('https://api.hcaptcha.com/siteverify', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/x-www-form-urlencoded',
+            //     },
+            //     body: `secret=0x2a10710d5cD127452F08cE302DB5E945338D2b3a&response=${token}`,
+            // })
+
+            // const data = await response.json()
+            // if (data.success) {
+            //     // hCaptcha verification successful, process the form
+            //     console.log('work')
+            //     // form.submit()
+            // } else {
+            //     // hCaptcha verification failed, show an error
+            //     console.log('hCaptcha verification failed')
+            // }
+        })
 })

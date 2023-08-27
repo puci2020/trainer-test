@@ -177,15 +177,16 @@
 
                 <form action=""
                     method="post"
+                    id="feedback_form"
                     class="mt-5">
                     <div
                         class="form-group">
                         <label
-                            for="exampleFormControlInput1">Imię*</label>
+                            for="first_name">Imię*</label>
                         <input
-                            type="email"
+                            type="text"
                             class="form-control"
-                            id="exampleFormControlInput1">
+                            id="first_name">
                     </div>
                     <!-- <div
                         class="form-group">
@@ -210,8 +211,9 @@
                         class="form-group">
 
                         <label
-                            for="exampleFormControlInput1">Ocena*</label>
+                            for="feedback_value">Ocena*</label>
                         <select
+                            id="feedback_value"
                             class="custom-select">
                             <option
                                 selected
@@ -253,13 +255,39 @@
                     <div
                         class="form-group">
                         <label
-                            for="exampleFormControlTextarea1">Komentarz*</label>
+                            for="comment">Komentarz*</label>
                         <textarea
                             class="form-control"
-                            id="exampleFormControlTextarea1"
+                            id="comment"
                             rows="5"></textarea>
                     </div>
-
+                    <div
+                        class="form-group custom-control custom-checkbox">
+                        <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="rodo">
+                        <label
+                            class="custom-control-label"
+                            for="rodo">Wyrażam
+                            zgodę na
+                            przetwarzanie
+                            moich
+                            danych
+                            osobowych
+                            zgodnie z
+                            ustawą o
+                            ochronie
+                            danych
+                            osobowych w
+                            celu
+                            przesyłania
+                            informacji
+                            handlowej
+                            drogą
+                            elektroniczną.
+                            *</label>
+                    </div>
                     <div
                         class="form-group">
                         <button
