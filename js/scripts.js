@@ -212,7 +212,7 @@ $(function () {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: `secret=b3e837d8-64a4-4368-8870-3e186917c94a&response=${token}`,
+            body: `secret=0x2a10710d5cD127452F08cE302DB5E945338D2b3a&response=${token}`,
         })
 
         const data = await response.json()
