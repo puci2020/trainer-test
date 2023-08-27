@@ -207,7 +207,7 @@ $(function () {
 
         // Submit the form with hCaptcha response token
         const token = grecaptcha.getResponse()
-        const response = await fetch('https://hcaptcha.com/siteverify', {
+        const response = await fetch('https://api.hcaptcha.com/siteverify', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
