@@ -14,7 +14,7 @@ h2 {
 }
 
 .bg-hero {
-  background-image: url("../img/home.JPG");
+  background-image: url("../img/3.JPG");
 }
 .bg-hero::before {
   background-color: rgba(0, 0, 0, 0);
@@ -98,7 +98,7 @@ footer .social a {
 }
 
 #offer {
-  background-image: url("../img/gym.jpg");
+  background-image: url("../img/personal.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position-x: center;
