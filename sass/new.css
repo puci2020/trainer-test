@@ -137,8 +137,17 @@ footer .social a {
   width: 100%;
 }
 
+.ratings {
+  display: flex;
+  gap: 5px;
+}
+
 .rating-color {
   color: #fbc634;
+}
+
+.auto-fit {
+  width: fit-content;
 }
 
 .box-link {

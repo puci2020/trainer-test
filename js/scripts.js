@@ -187,16 +187,42 @@ $(function () {
         }
     })
 
-    /**Theme switcher - DEMO PURPOSE ONLY */
-    // $('.switcher-trigger').click(function () {
-    //     $('.switcher-wrap').toggleClass('active');
-    // });
-    // $('.color-switcher ul li').click(function () {
-    //     var color = $(this).attr('data-color');
-    //     $('#theme-color').attr("href", "css/" + color + ".css");
-    //     $('.color-switcher ul li').removeClass('active');
-    //     $(this).addClass('active');
-    // });
+    //fetch feedbacks
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow',
+    }
+
+    fetch('http://localhost:1337/api/feedbacks', requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+            let res = JSON.parse(result)
+            res.data.forEach((opinionData) => {
+                $('.slider_opinion').slick(
+                    'slickAdd',
+                    `
+                    <div class="card img-fluid rounded d-block m-2 opinion_block">
+        <div class="card-body">
+            <h5 class="card-title pt-3">${opinionData.attributes.name}</h5>
+            <div class="ratings">
+                ${'<i class="fa fa-star rating-color"></i>'.repeat(
+                    opinionData.attributes.rate,
+                )}
+                ${'<i class="fa fa-star"></i>'.repeat(
+                    5 - opinionData.attributes.rate,
+                )}
+            </div>
+            <div class="text-muted font-weight-medium mt-2">${
+                opinionData.attributes.description
+            }</div>
+        </div></div>
+    `,
+                )
+                // const opinionBlock = createOpinionBlock(opinionData.attributes)
+                // requiredDiv.appendChild(opinionBlock)
+            })
+        })
+        .catch((error) => console.log('error', error))
 
     const contactForm = document.getElementById('contact_form')
     const feedbackForm = document.getElementById('feedback_form')
@@ -274,6 +300,14 @@ $(function () {
             //     console.log('hCaptcha verification failed')
             // }
         })
+    var polipop = new Polipop('mypolipop', {
+        layout: 'popups',
+        insert: 'after',
+        pool: 5,
+        closer: false,
+        sticky: false,
+        position: 'bottom-right',
+    })
 
     if (feedbackForm)
         feedbackForm.addEventListener('submit', async (event) => {
@@ -286,7 +320,13 @@ $(function () {
             const rodo = document.getElementById('rodo').checked
 
             if (!firstName || !feedbackValue || !comment || !rodo) {
-                event.preventDefault()
+                polipop.add({
+                    content:
+                        'Sprawdź, czy formularz jest poprawnie wypełniony!',
+                    title: 'Coś poszło nie tak :(',
+                    type: 'error',
+                }),
+                    event.preventDefault()
                 if (!firstName)
                     document
                         .getElementById('first_name')
@@ -320,25 +360,44 @@ $(function () {
                     document
                         .getElementById('rodo')
                         .classList.remove('is-invalid')
+            } else {
+                var myHeaders = new Headers()
+                myHeaders.append('Content-Type', 'application/json')
+
+                var raw = JSON.stringify({
+                    data: {
+                        rate: feedbackValue,
+                        description: comment,
+                        name: firstName,
+                        publishedAt: null,
+                    },
+                })
+
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow',
+                }
+
+                fetch('http://localhost:1337/api/feedbacks', requestOptions)
+                    .then((response) => response.text())
+                    .then((result) => {
+                        feedbackForm.reset()
+                        polipop.add({
+                            content: 'Dziękuję za opinię!',
+                            title: 'Sukces',
+                            type: 'success',
+                        })
+                    })
+                    .catch((error) =>
+                        polipop.add({
+                            content:
+                                'Spróbuj ponownie lub powiadom mnie o incydencie!',
+                            title: 'Coś poszło nie tak :(',
+                            type: 'error',
+                        }),
+                    )
             }
-
-            // const token = grecaptcha.getResponse()
-            // const response = await fetch('https://api.hcaptcha.com/siteverify', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/x-www-form-urlencoded',
-            //     },
-            //     body: `secret=0x2a10710d5cD127452F08cE302DB5E945338D2b3a&response=${token}`,
-            // })
-
-            // const data = await response.json()
-            // if (data.success) {
-            //     // hCaptcha verification successful, process the form
-            //     console.log('work')
-            //     // form.submit()
-            // } else {
-            //     // hCaptcha verification failed, show an error
-            //     console.log('hCaptcha verification failed')
-            // }
         })
 })
