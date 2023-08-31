@@ -193,7 +193,7 @@ $(function () {
         redirect: 'follow',
     }
 
-    fetch('http://localhost:1337/api/feedbacks', requestOptions)
+    fetch('https://panel.trenujzfotka.pl/api/feedbacks', requestOptions)
         .then((response) => response.text())
         .then((result) => {
             let res = JSON.parse(result)
@@ -224,6 +224,15 @@ $(function () {
         })
         .catch((error) => console.log('error', error))
 
+    var polipop = new Polipop('mypolipop', {
+        layout: 'popups',
+        insert: 'after',
+        pool: 5,
+        closer: false,
+        sticky: false,
+        position: 'bottom-right',
+    })
+
     const contactForm = document.getElementById('contact_form')
     const feedbackForm = document.getElementById('feedback_form')
 
@@ -238,6 +247,12 @@ $(function () {
             const rodo = document.getElementById('rodo').checked
 
             if (!firstName || !email || !subject || !message || !rodo) {
+                polipop.add({
+                    content:
+                        'Sprawdź, czy formularz jest poprawnie wypełniony!',
+                    title: 'Coś poszło nie tak :(',
+                    type: 'error',
+                })
                 event.preventDefault()
                 if (!firstName)
                     document
@@ -279,6 +294,47 @@ $(function () {
                     document
                         .getElementById('rodo')
                         .classList.remove('is-invalid')
+            } else {
+                const myHeaders = new Headers()
+                myHeaders.append('Content-Type', 'application/json')
+
+                var raw = JSON.stringify({
+                    data: {
+                        name: firstName,
+                        email: email,
+                        subject: subject,
+                        message: message,
+                    },
+                })
+
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow',
+                }
+
+                fetch(
+                    'https://panel.trenujzfotka.pl/api/emails',
+                    requestOptions,
+                )
+                    .then((response) => response.text())
+                    .then((result) => {
+                        contactForm.reset()
+                        polipop.add({
+                            content: 'Dziękuję za wiadomość!',
+                            title: 'Sukces',
+                            type: 'success',
+                        })
+                    })
+                    .catch((error) =>
+                        polipop.add({
+                            content:
+                                'Spróbuj ponownie lub powiadom mnie o incydencie!',
+                            title: 'Coś poszło nie tak :(',
+                            type: 'error',
+                        }),
+                    )
             }
 
             // const token = grecaptcha.getResponse()
@@ -300,14 +356,6 @@ $(function () {
             //     console.log('hCaptcha verification failed')
             // }
         })
-    var polipop = new Polipop('mypolipop', {
-        layout: 'popups',
-        insert: 'after',
-        pool: 5,
-        closer: false,
-        sticky: false,
-        position: 'bottom-right',
-    })
 
     if (feedbackForm)
         feedbackForm.addEventListener('submit', async (event) => {
@@ -325,8 +373,8 @@ $(function () {
                         'Sprawdź, czy formularz jest poprawnie wypełniony!',
                     title: 'Coś poszło nie tak :(',
                     type: 'error',
-                }),
-                    event.preventDefault()
+                })
+                event.preventDefault()
                 if (!firstName)
                     document
                         .getElementById('first_name')
@@ -361,7 +409,7 @@ $(function () {
                         .getElementById('rodo')
                         .classList.remove('is-invalid')
             } else {
-                var myHeaders = new Headers()
+                const myHeaders = new Headers()
                 myHeaders.append('Content-Type', 'application/json')
 
                 var raw = JSON.stringify({
@@ -380,7 +428,10 @@ $(function () {
                     redirect: 'follow',
                 }
 
-                fetch('http://localhost:1337/api/feedbacks', requestOptions)
+                fetch(
+                    'https://panel.trenujzfotka.pl/api/feedbacks',
+                    requestOptions,
+                )
                     .then((response) => response.text())
                     .then((result) => {
                         feedbackForm.reset()
