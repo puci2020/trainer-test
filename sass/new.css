@@ -16,12 +16,21 @@ h2 {
 .bg-hero {
   background-image: url("../img/3.JPG");
   background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-position-x: center;
   background-position-y: center;
+  -webkit-background-position-x: center;
+  -webkit-background-position-y: center;
+  -moz-background-position-x: center;
+  -moz-background-position-y: center;
+  -o-background-position-x: center;
+  -o-background-position-y: center;
 }
 .bg-hero::before {
   background-color: rgba(0, 0, 0, 0);
@@ -30,12 +39,21 @@ h2 {
 .ofer {
   background-image: url("../img/ofer_bg.jpg");
   background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-position-x: center;
   background-position-y: center;
+  -webkit-background-position-x: center;
+  -webkit-background-position-y: center;
+  -moz-background-position-x: center;
+  -moz-background-position-y: center;
+  -o-background-position-x: center;
+  -o-background-position-y: center;
   height: 400px;
 }
 .ofer::before {
@@ -44,12 +62,21 @@ h2 {
 
 .workout_plan {
   background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
-  background-position-x: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  background-position-x: center;
   background-position-y: center;
+  -webkit-background-position-x: center;
+  -webkit-background-position-y: center;
+  -moz-background-position-x: center;
+  -moz-background-position-y: center;
+  -o-background-position-x: center;
+  -o-background-position-y: center;
   position: relative;
   background-image: url("../img/workout_plan.jpg");
   height: 400px;
@@ -60,12 +87,21 @@ h2 {
 
 .personal_training {
   background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-position-x: center;
   background-position-y: center;
+  -webkit-background-position-x: center;
+  -webkit-background-position-y: center;
+  -moz-background-position-x: center;
+  -moz-background-position-y: center;
+  -o-background-position-x: center;
+  -o-background-position-y: center;
   position: relative;
   background-image: url("../img/personal_training.jpg");
   height: 400px;
@@ -97,11 +133,21 @@ footer .social a {
 #faq {
   background-image: url("../img/6.JPG");
   background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-position-x: center;
+  background-position-y: center;
+  -webkit-background-position-x: center;
+  -webkit-background-position-y: center;
+  -moz-background-position-x: center;
+  -moz-background-position-y: center;
+  -o-background-position-x: center;
+  -o-background-position-y: center;
   position: relative;
 }
 #faq:before {
@@ -123,11 +169,21 @@ footer .social a {
 #offer {
   background-image: url("../img/personal.jpg");
   background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-position-x: center;
+  background-position-y: center;
+  -webkit-background-position-x: center;
+  -webkit-background-position-y: center;
+  -moz-background-position-x: center;
+  -moz-background-position-y: center;
+  -o-background-position-x: center;
+  -o-background-position-y: center;
   position: relative;
 }
 #offer:before {
@@ -193,9 +249,21 @@ footer .social a {
   }
   .form-image {
     background-attachment: fixed;
+    -webkit-background-attachment: fixed;
+    -moz-background-attachment: fixed;
+    -o-background-attachment: fixed;
     background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-position-x: center;
     background-position-y: 100px;
+    -webkit-background-position-x: center;
+    -webkit-background-position-y: 100px;
+    -moz-background-position-x: center;
+    -moz-background-position-y: 100px;
+    -o-background-position-x: center;
+    -o-background-position-y: 100px;
   }
   .form-image::before {
     margin-top: 9rem;
