@@ -3,6 +3,7 @@
 button,
 h2 {
   font-family: "Kanit", sans-serif;
+  font-style: italic;
 }
 
 .text-muted {
@@ -15,6 +16,10 @@ h2 {
 
 .bg-hero {
   background-image: url("../img/3.JPG");
+  background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -34,6 +39,10 @@ h2 {
 
 .ofer {
   background-image: url("../img/ofer_bg.jpg");
+  background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -53,6 +62,10 @@ h2 {
 }
 
 .workout_plan {
+  background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -74,6 +87,10 @@ h2 {
 }
 
 .personal_training {
+  background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -116,6 +133,10 @@ footer .social a {
 
 #faq {
   background-image: url("../img/6.JPG");
+  background-attachment: fixed;
+  -webkit-background-attachment: fixed;
+  -moz-background-attachment: fixed;
+  -o-background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -148,10 +169,12 @@ footer .social a {
 
 #offer {
   background-image: url("../img/personal.jpg");
+  background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  -webkit-background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
   -webkit-background-position-x: center;
@@ -224,6 +247,10 @@ footer .social a {
     gap: 20px;
   }
   .form-image {
+    background-attachment: fixed;
+    -webkit-background-attachment: fixed;
+    -moz-background-attachment: fixed;
+    -o-background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
