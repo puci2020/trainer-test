@@ -246,47 +246,6 @@ $(function () {
             const message = document.getElementById('message').value
             const rodo = document.getElementById('rodo').checked
 
-            const token = grecaptcha.getResponse()
-            const postData = {
-                secret: '0x2a10710d5cD127452F08cE302DB5E945338D2b3a',
-                response: token,
-            }
-            const hcaptchaVerifyUrl = 'https://hcaptcha.com/siteverify'
-
-            // Send the POST request to hCaptcha for verification
-            fetch(hcaptchaVerifyUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams(postData).toString(),
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    const { success, score } = data
-
-                    if (success) {
-                        // The hCaptcha token is valid
-                        console.log('hCaptcha verification successful')
-                    } else {
-                        // The hCaptcha token is not valid
-                        console.error('hCaptcha verification failed')
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error verifying hCaptcha:', error)
-                })
-
-            // const data = response.data
-
-            // if (data.success) {
-            //     // hCaptcha verification successful, process the form
-            //     console.log('work')
-            //     // form.submit()
-            // } else {
-            //     // hCaptcha verification failed, show an error
-            //     console.log('hCaptcha verification failed')
-            // }
             if (!firstName || !email || !subject || !message || !rodo) {
                 polipop.add({
                     content:
@@ -355,27 +314,27 @@ $(function () {
                     redirect: 'follow',
                 }
 
-                // fetch(
-                //     'https://panel.trenujzfotka.pl/api/emails',
-                //     requestOptions,
-                // )
-                //     .then((response) => response.text())
-                //     .then((result) => {
-                //         contactForm.reset()
-                //         polipop.add({
-                //             content: 'Dziękuję za wiadomość!',
-                //             title: 'Sukces',
-                //             type: 'success',
-                //         })
-                //     })
-                //     .catch((error) =>
-                //         polipop.add({
-                //             content:
-                //                 'Spróbuj ponownie lub powiadom mnie o incydencie!',
-                //             title: 'Coś poszło nie tak :(',
-                //             type: 'error',
-                //         }),
-                //     )
+                fetch(
+                    'https://panel.trenujzfotka.pl/api/emails',
+                    requestOptions,
+                )
+                    .then((response) => response.text())
+                    .then((result) => {
+                        contactForm.reset()
+                        polipop.add({
+                            content: 'Dziękuję za wiadomość!',
+                            title: 'Sukces',
+                            type: 'success',
+                        })
+                    })
+                    .catch((error) =>
+                        polipop.add({
+                            content:
+                                'Spróbuj ponownie lub powiadom mnie o incydencie!',
+                            title: 'Coś poszło nie tak :(',
+                            type: 'error',
+                        }),
+                    )
             }
         })
 
