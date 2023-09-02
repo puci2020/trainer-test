@@ -295,6 +295,29 @@ $(function () {
                         .getElementById('rodo')
                         .classList.remove('is-invalid')
             } else {
+
+                const token = grecaptcha.getResponse()
+                const response = await fetch(
+                    'https://api.hcaptcha.com/siteverify',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `secret=0x2a10710d5cD127452F08cE302DB5E945338D2b3a&response=${token}`,
+                    },
+                )
+
+                const data = await response.json()
+                if (data.success) {
+                    // hCaptcha verification successful, process the form
+                    console.log('work')
+                    // form.submit()
+                } else {
+                    // hCaptcha verification failed, show an error
+                    console.log('hCaptcha verification failed')
+                }
+
                 const myHeaders = new Headers()
                 myHeaders.append('Content-Type', 'application/json')
 
@@ -314,47 +337,30 @@ $(function () {
                     redirect: 'follow',
                 }
 
-                fetch(
-                    'https://panel.trenujzfotka.pl/api/emails',
-                    requestOptions,
-                )
-                    .then((response) => response.text())
-                    .then((result) => {
-                        contactForm.reset()
-                        polipop.add({
-                            content: 'Dziękuję za wiadomość!',
-                            title: 'Sukces',
-                            type: 'success',
-                        })
-                    })
-                    .catch((error) =>
-                        polipop.add({
-                            content:
-                                'Spróbuj ponownie lub powiadom mnie o incydencie!',
-                            title: 'Coś poszło nie tak :(',
-                            type: 'error',
-                        }),
-                    )
+                // fetch(
+                //     'https://panel.trenujzfotka.pl/api/emails',
+                //     requestOptions,
+                // )
+                //     .then((response) => response.text())
+                //     .then((result) => {
+                //         contactForm.reset()
+                //         polipop.add({
+                //             content: 'Dziękuję za wiadomość!',
+                //             title: 'Sukces',
+                //             type: 'success',
+                //         })
+                //     })
+                //     .catch((error) =>
+                //         polipop.add({
+                //             content:
+                //                 'Spróbuj ponownie lub powiadom mnie o incydencie!',
+                //             title: 'Coś poszło nie tak :(',
+                //             type: 'error',
+                //         }),
+                //     )
             }
 
-            // const token = grecaptcha.getResponse()
-            // const response = await fetch('https://api.hcaptcha.com/siteverify', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/x-www-form-urlencoded',
-            //     },
-            //     body: `secret=0x2a10710d5cD127452F08cE302DB5E945338D2b3a&response=${token}`,
-            // })
-
-            // const data = await response.json()
-            // if (data.success) {
-            //     // hCaptcha verification successful, process the form
-            //     console.log('work')
-            //     // form.submit()
-            // } else {
-            //     // hCaptcha verification failed, show an error
-            //     console.log('hCaptcha verification failed')
-            // }
+            
         })
 
     if (feedbackForm)
