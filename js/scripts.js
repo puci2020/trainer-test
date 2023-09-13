@@ -17,7 +17,7 @@ function updateViews(lastView) {
     }
 
     console.log('sss')
-    fetch('http://localhost:1337/api/views/1', requestOptions)
+    fetch('https://panel.trenujzfotka.pl/api/views/1', requestOptions)
         .then((response) => response.text())
         .then((result) => {})
         .catch((error) => {})
