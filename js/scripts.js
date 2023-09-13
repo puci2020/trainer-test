@@ -16,7 +16,6 @@ function updateViews(lastView) {
         redirect: 'follow',
     }
 
-    console.log('sss')
     fetch('https://panel.trenujzfotka.pl/api/views/1', requestOptions)
         .then((response) => response.text())
         .then((result) => {})
