@@ -7646,7 +7646,7 @@ body {
     color: #2979ff !important; }
 
 .slick-next:before, .slick-prev:before {
-  color: rgba(41, 121, 255, 0.2); }
+  color: #2979ff }
 
 .slick-next:hover:before, .slick-prev:hover:before {
   color: #2979ff; }

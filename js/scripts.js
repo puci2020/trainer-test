@@ -1,4 +1,46 @@
+function updateViews(lastView) {
+    const myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/json')
+
+    var raw = JSON.stringify({
+        data: {
+            view: lastView + 1,
+            last_visit: new Date(),
+        },
+    })
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+    }
+
+    console.log('sss')
+    fetch('http://localhost:1337/api/views/1', requestOptions)
+        .then((response) => response.text())
+        .then((result) => {})
+        .catch((error) => {})
+}
+
 $(function () {
+    const fotka_session = sessionStorage.getItem('fotka_session')
+
+    if (!fotka_session) {
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+        }
+        fetch('http://localhost:1337/api/views/1', requestOptions)
+            .then((response) => response.text())
+            .then((result) => {
+                const last = JSON.parse(result)
+                updateViews(last.data.attributes.view)
+            })
+            .catch((error) => {})
+    }
+    sessionStorage.setItem('fotka_session', true)
+
     // init feather icons
     feather.replace()
 
@@ -69,8 +111,7 @@ $(function () {
     $('.slider_opinion').slick({
         slidesToShow: 4,
         slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
+        autoplay: false,
         dots: true,
         arrows: true,
         responsive: [
