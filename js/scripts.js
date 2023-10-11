@@ -153,23 +153,25 @@ $(function () {
             $(this).slick('slickPrev')
         }
     })
-    let isDragging = false
-    let startX = 0
-    let endX = 0
-
     $('.slider_opinion')
         .on('touchstart', function (e) {
-            e.preventDefault()
-            isDragging = true
+            isDragging = false // Reset the dragging flag
             startX = e.originalEvent.touches[0].pageX
         })
         .on('touchmove', function (e) {
-            if (!isDragging) return
             endX = e.originalEvent.touches[0].pageX
+
+            // Check if the user is scrolling the page vertically
+            if (Math.abs(startX - endX) < 10) {
+                isDragging = false // Not a horizontal swipe
+                return
+            }
+
+            isDragging = true
+            e.preventDefault() // Prevent page scrolling while swiping
         })
         .on('touchend', function () {
             if (isDragging) {
-                isDragging = false
                 const deltaX = endX - startX
                 if (deltaX > 50) {
                     // Dragged to the right, move to the previous item
@@ -179,6 +181,7 @@ $(function () {
                     $(this).slick('slickNext')
                 }
             }
+            isDragging = false
         })
 
     $(document).on('touchend', function () {
