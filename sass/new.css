@@ -274,4 +274,9 @@ footer .social a {
     padding-left: 5px;
     padding-right: 5px;
   }
+}
+@media (max-width: 450px) {
+  #home {
+    background-image: url("../img/natalia_fota_mobile.JPG") !important;
+  }
 }/*# sourceMappingURL=new.css.map */
