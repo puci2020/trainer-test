@@ -158,16 +158,16 @@ $(function () {
     let endX = 0
 
     $('.slider_opinion')
-        .on('mousedown touchstart', function (e) {
+        .on('touchstart', function (e) {
             e.preventDefault()
             isDragging = true
-            startX = e.pageX || e.originalEvent.touches[0].pageX
+            startX = e.originalEvent.touches[0].pageX
         })
-        .on('mousemove touchmove', function (e) {
+        .on('touchmove', function (e) {
             if (!isDragging) return
-            endX = e.pageX || e.originalEvent.touches[0].pageX
+            endX = e.originalEvent.touches[0].pageX
         })
-        .on('mouseup touchend', function () {
+        .on('touchend', function () {
             if (isDragging) {
                 isDragging = false
                 const deltaX = endX - startX
@@ -181,7 +181,7 @@ $(function () {
             }
         })
 
-    $(document).on('mouseup touchend', function () {
+    $(document).on('touchend', function () {
         isDragging = false
     })
 
