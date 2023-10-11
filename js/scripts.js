@@ -113,6 +113,7 @@ $(function () {
         autoplay: false,
         dots: true,
         arrows: true,
+        swipeToSlide: true,
         responsive: [
             {
                 breakpoint: 1024,
@@ -142,6 +143,48 @@ $(function () {
             // instead of a settings object
         ],
     })
+
+    $('.slider_opinion').on('wheel', function (e) {
+        e.preventDefault()
+
+        if (e.originalEvent.deltaY < 0) {
+            $(this).slick('slickNext')
+        } else {
+            $(this).slick('slickPrev')
+        }
+    })
+    let isDragging = false
+    let startX = 0
+    let endX = 0
+
+    $('.slider_opinion')
+        .on('mousedown touchstart', function (e) {
+            e.preventDefault()
+            isDragging = true
+            startX = e.pageX || e.originalEvent.touches[0].pageX
+        })
+        .on('mousemove touchmove', function (e) {
+            if (!isDragging) return
+            endX = e.pageX || e.originalEvent.touches[0].pageX
+        })
+        .on('mouseup touchend', function () {
+            if (isDragging) {
+                isDragging = false
+                const deltaX = endX - startX
+                if (deltaX > 50) {
+                    // Dragged to the right, move to the previous item
+                    $(this).slick('slickPrev')
+                } else if (deltaX < -50) {
+                    // Dragged to the left, move to the next item
+                    $(this).slick('slickNext')
+                }
+            }
+        })
+
+    $(document).on('mouseup touchend', function () {
+        isDragging = false
+    })
+
     $('.slider_one').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
